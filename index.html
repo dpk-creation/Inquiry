@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Move - Flexi Movers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="inquiry.css">
+</head>
+<body>
+    <header class="mini-header">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-truck-moving"></i> FLEXI MOVERS</a>
+            <div class="header-right">
+                <a href="tel:+64212456800" class="call-link"><i class="fa-solid fa-phone"></i> 021 245 6800</a>
+                <a href="admin.html" class="admin-link">Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="inquiry-page">
+        <div class="container">
+            <div class="page-title">
+                <p class="eyebrow">FAST, RELIABLE, AFFORDABLE</p>
+                <h1>BOOK YOUR <span>MOVE TODAY</span></h1>
+                <p class="sub">Get a free quote within 1 hour. Same-day bookings available across Auckland & Nationwide.</p>
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                <div class="steps">
+                    <div class="step active" data-step="1"><span>1</span><p>Personal</p></div>
+                    <div class="step" data-step="2"><span>2</span><p>Property</p></div>
+                    <div class="step" data-step="3"><span>3</span><p>Items & Service</p></div>
+                    <div class="step" data-step="4"><span>4</span><p>Schedule & Confirm</p></div>
+                </div>
+            </div>
+
+            <form id="bookingForm" class="booking-card">
+                <div class="form-step active" data-step="1">
+                    <h3><i class="fa-solid fa-user"></i> Personal Information</h3>
+                    <div class="grid-2">
+                        <div class="field"><label>Full Name *</label><input type="text" name="full_name" placeholder="JOHN DOE" required></div>
+                        <div class="field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="021 245 6800" pattern="^0?2[0-9 ]{7,}$" required><small>NZ format: 021...</small></div>
+                        <div class="field"><label>Email Address *</label><input type="email" name="email" placeholder="john@email.com" required></div>
+                        <div class="field"><label>Alternate Phone</label><input type="tel" name="alt_phone" placeholder="Optional"></div>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="2">
+                    <h3><i class="fa-solid fa-house"></i> Property & Addresses</h3>
+                    <div class="grid-2">
+                        <div class="field full"><label>Move Type *</label>
+                            <select name="move_type" required>
+                                <option value="">Select Move Type</option>
+                                <option value="House Move">House Move</option>
+                                <option value="Apartment Move">Apartment Move</option>
+                                <option value="Office / Commercial Move">Office / Commercial Move</option>
+                                <option value="Retirement / Senior Move">Retirement / Senior Move</option>
+                                <option value="Furniture / Single Item">Furniture / Single Item</option>
+                                <option value="Packing / Cleaning">Packing / Cleaning Services</option>
+                                <option value="Freight & Pallet">Freight & Pallet Moving</option>
+                                <option value="Nationwide Move">Nationwide Move</option>
+                            </select>
+                        </div>
+                        <div class="field"><label>Bedrooms / Size</label>
+                            <select name="bedrooms">
+                                <option value="1">1 Bedroom / Studio</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3" selected>3 Bedrooms</option>
+                                <option value="4">4 Bedrooms</option>
+                                <option value="5">5+ Bedrooms / Large</option>
+                            </select>
+                        </div>
+                        <div class="field"><label>Floor & Access</label>
+                            <select name="floor_access">
+                                <option>Ground Floor</option>
+                                <option>1st Floor - With Lift</option>
+                                <option>1st Floor - Stairs Only</option>
+                                <option>2nd+ Floor - With Lift</option>
+                                <option>2nd+ Floor - Stairs Only</option>
+                            </select>
+                        </div>
+                        <div class="field full"><label>Pickup Address *</label><input type="text" name="pickup_address" placeholder="123 Queen St, Auckland" required></div>
+                        <div class="field full"><label>Delivery Address *</label><input type="text" name="delivery_address" placeholder="456 Great North Rd, Auckland" required></div>
+                        <div class="field full"><label>Access Issues / Parking Notes</label><textarea name="access_notes" rows="2" placeholder="e.g., Narrow driveway, No lift, Limited parking..."></textarea></div>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="3">
+                    <h3><i class="fa-solid fa-boxes-stacked"></i> Inventory & Service Details</h3>
+                    <label>Inventory List</label>
+                    <div id="inventoryList" class="inventory-list">
+                        <div class="inv-row">
+                            <input type="text" placeholder="Item (e.g., Sofa)" class="inv-name">
+                            <input type="number" placeholder="Qty" value="1" min="1" class="inv-qty">
+                            <label class="fragile-check"><input type="checkbox" class="inv-fragile"> Fragile</label>
+                            <button type="button" class="btn-remove" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add" onclick="addInventoryRow()"><i class="fa-solid fa-plus"></i> Add Item</button>
+
+                    <div class="grid-2 mt-20">
+                        <div class="field"><label>Vehicle Type *</label>
+                            <select name="vehicle_type" id="vehicleType" required>
+                                <option value="Small Van + 1 Mover - $70/hr" data-rate="70">Small Van + 1 Mover - $70/hr</option>
+                                <option value="15m³ Van + 1 Mover - $80/hr" data-rate="80" selected>15m³ Van + 1 Mover - $80/hr</option>
+                                <option value="20m³ Truck + 2 Movers - $120/hr" data-rate="120">20m³ Truck + 2 Movers - $120/hr</option>
+                                <option value="Custom / Nationwide" data-rate="0">Custom / Nationwide - Quote</option>
+                            </select>
+                        </div>
+                        <div class="field"><label>Number of Movers</label>
+                            <select name="movers_count" id="moversCount">
+                                <option value="1">1 Mover</option>
+                                <option value="2" selected>2 Movers</option>
+                                <option value="3">3 Movers</option>
+                                <option value="4">4 Movers</option>
+                            </select>
+                        </div>
+                        <div class="field full"><label>Additional Services</label>
+                            <div class="checks">
+                                <label><input type="checkbox" name="services" value="Packing"> Packing</label>
+                                <label><input type="checkbox" name="services" value="Unpacking"> Unpacking</label>
+                                <label><input type="checkbox" name="services" value="Cleaning"> Cleaning</label>
+                                <label><input type="checkbox" name="services" value="Storage"> Storage</label>
+                                <label><input type="checkbox" name="services" value="Dismantle/Assemble"> Dismantle / Assemble</label>
+                                <label><input type="checkbox" name="services" value="Piano/Special"> Piano / Special Items</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="4">
+                    <h3><i class="fa-solid fa-calendar-check"></i> Schedule & Confirmation</h3>
+                    <div class="grid-2">
+                        <div class="field"><label>Preferred Moving Date *</label><input type="date" name="preferred_date" id="prefDate" required><div id="dateStatus" class="date-status"></div></div>
+                        <div class="field"><label>Alternative Date</label><input type="date" name="alternative_date" id="altDate"></div>
+                        <div class="field"><label>Preferred Time Slot *</label>
+                            <select name="time_slot" required>
+                                <option value="Morning (7AM - 11AM)">Morning (7AM - 11AM)</option>
+                                <option value="Midday (11AM - 2PM)">Midday (11AM - 2PM)</option>
+                                <option value="Afternoon (2PM - 6PM)" selected>Afternoon (2PM - 6PM)</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <div class="field"><label>How did you hear about us?</label>
+                            <select name="source"><option>Google</option><option>Facebook</option><option>Referral</option><option>Other</option></select>
+                        </div>
+                        <div class="field full"><label>Special Instructions / Items Description</label><textarea name="special_instructions" rows="3" placeholder="Tell us more about your move..."></textarea></div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="prevBtn" class="btn-prev" style="display:none;">Back</button>
+                    <button type="button" id="nextBtn" class="btn-next">Next <i class="fa-solid fa-arrow-right"></i></button>
+                    <button type="submit" id="submitBtn" class="btn-submit" style="display:none;"><i class="fa-solid fa-paper-plane"></i> CONFIRM BOOKING</button>
+                </div>
+                <p class="secure-note"><i class="fa-solid fa-lock"></i> Your data is secure and will be sent to Flexi Movers admin panel via Supabase.</p>
+            </form>
+        </div>
+    </main>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Booking Confirmed!</h3>
+            <p>Your booking ID is <strong id="bookingIdShow">FM-0000</strong></p>
+            <p>We will contact you within 1 hour to confirm your move.</p>
+            <div class="modal-actions">
+                <a href="index.html" class="btn-next">Back to Home</a>
+                <button onclick="closeModal()" class="btn-prev">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="inquiry.js"></script>
+</body>
+</html>
