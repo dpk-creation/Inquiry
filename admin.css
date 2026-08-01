@@ -39,6 +39,7 @@ body{font-family:'Poppins',sans-serif;background:#f8fafc;color:#111827}
 .header-actions{display:flex;gap:12px;align-items:center}
 .header-actions span{font-size:12px;color:#6b7280}
 .profile{background:#f3f4f6;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600}
+#headerLogout{display:none;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:14px;flex-shrink:0}
 
 .page{display:none;padding:20px;animation:fade .2s}
 .page.active{display:block}
@@ -119,6 +120,7 @@ body{font-family:'Poppins',sans-serif;background:#f8fafc;color:#111827}
   .sidebar-header,.sidebar-footer{display:none}
   .main-header{padding:14px 16px}
   .stats-grid{grid-template-columns:1fr 1fr}
+  #headerLogout{display:inline-flex;align-items:center;justify-content:center}
 }
 
 /* Professional Driver Selection Modal */

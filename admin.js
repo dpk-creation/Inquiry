@@ -25,6 +25,7 @@ try {
 const loginScreen = document.getElementById('loginScreen');
 const adminApp = document.getElementById('adminApp');
 const loginForm = document.getElementById('loginForm');
+let currentCalDate = new Date(); // FIX: moved up here so it's initialized before renderCalendar() runs on load
 
 function checkLogin(){ 
   if(localStorage.getItem('fm_admin_logged')==='true') showApp(); 
@@ -542,8 +543,6 @@ window.confirmOrder = async function(id){
 }
 
 // ==================== CALENDAR & CAPACITY ====================
-
-let currentCalDate = new Date();
 
 window.changeMonth = function(dir){
   currentCalDate.setMonth(currentCalDate.getMonth()+dir);
