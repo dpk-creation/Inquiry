@@ -11,10 +11,11 @@
 <body>
     <header class="mini-header">
         <div class="container">
-            <a href="index.html" class="logo"><i class="fa-solid fa-truck-moving"></i> FLEXI MOVERS</a>
+        <div class="logo">
+            <img src="image/logo.png" alt="Flexi Movers Logo">
+        </div>
             <div class="header-right">
-                <a href="tel:+64212456800" class="call-link"><i class="fa-solid fa-phone"></i> 021 245 6800</a>
-                <a href="admin.html" class="admin-link">Admin</a>
+                <a href="tel:+64212456800" class="call-link"><i class="fa-solid fa-phone"></i>call us</a>
             </div>
         </div>
     </header>
@@ -42,7 +43,7 @@
                     <h3><i class="fa-solid fa-user"></i> Personal Information</h3>
                     <div class="grid-2">
                         <div class="field"><label>Full Name *</label><input type="text" name="full_name" placeholder="JOHN DOE" required></div>
-                        <div class="field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="021 245 6800" pattern="^0?2[0-9 ]{7,}$" required><small>NZ format: 021...</small></div>
+                        <div class="field"><label>Phone Number *</label><input type="tel" name="phone" placeholder="021..." pattern="^0?2[0-9 ]{7,}$" required><small>NZ format: 021...</small></div>
                         <div class="field"><label>Email Address *</label><input type="email" name="email" placeholder="john@email.com" required></div>
                         <div class="field"><label>Alternate Phone</label><input type="tel" name="alt_phone" placeholder="Optional"></div>
                     </div>
@@ -156,7 +157,7 @@
                     <button type="button" id="nextBtn" class="btn-next">Next <i class="fa-solid fa-arrow-right"></i></button>
                     <button type="submit" id="submitBtn" class="btn-submit" style="display:none;"><i class="fa-solid fa-paper-plane"></i> CONFIRM BOOKING</button>
                 </div>
-                <p class="secure-note"><i class="fa-solid fa-lock"></i> Your data is secure and will be sent to Flexi Movers admin panel via Supabase.</p>
+                <p class="secure-note"><i class="fa-solid fa-lock"></i> Your data is secure and will be sent to Flexi Movers</p>
             </form>
         </div>
     </main>
